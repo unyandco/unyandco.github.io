@@ -32,4 +32,4 @@ Run `npm run build` to create a production build in the `dist/` directory.
 
 ## Deployment
 
-This website is configured for GitHub Pages deployment. Simply push to the main branch and GitHub Actions will automatically build and deploy the site to `https://unyandco.github.io`.
+This website is configured for GitHub Pages deployment. Run `npm run deploy` to build and deploy the site to `https://unyandco.github.io`.
