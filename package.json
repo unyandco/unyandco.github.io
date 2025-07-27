@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://vivekreddy9036.github.io/my-unyandco-website",
+  "homepage": "https://unyandco.github.io",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
