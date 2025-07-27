@@ -29,11 +29,11 @@ const AboutSection = () => {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6" style={{ fontFamily: 'Times, "Times New Roman", serif' }}>
             About 
             <span className="bg-gradient-accent bg-clip-text text-transparent"> Me</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: 'Crimson Text, serif' }}>
             Dedicated to providing exceptional financial services with integrity, 
             expertise, and a personal touch that makes all the difference.
           </p>
@@ -48,13 +48,13 @@ const AboutSection = () => {
                 <Heart className="w-6 h-6 text-accent mr-3" />
                 My Professional Journey
               </h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
+              <p className="text-muted-foreground leading-relaxed mb-4" style={{ fontFamily: 'Crimson Text, serif' }}>
                 With over a decade of experience in the accounting and finance industry, 
                 I have dedicated my career to helping individuals and businesses navigate 
                 the complex world of financial management. My passion lies in transforming 
                 financial challenges into opportunities for growth and success.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed" style={{ fontFamily: 'Crimson Text, serif' }}>
                 I believe that every client deserves personalized attention and tailored 
                 solutions. Whether you're a small business owner looking to optimize your 
                 operations or an individual seeking comprehensive tax planning, I'm here 
@@ -68,7 +68,7 @@ const AboutSection = () => {
                 <Target className="w-6 h-6 text-accent mr-3" />
                 My Mission
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed" style={{ fontFamily: 'Crimson Text, serif' }}>
                 To provide exceptional accounting and financial services that empower 
                 my clients to make informed decisions, achieve their goals, and build 
                 lasting financial security. I strive to be more than just an accountant 

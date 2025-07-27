@@ -1,6 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Download, ArrowRight } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import precisionIcon from "@/assets/Precision.png";
+import innovationIcon from "@/assets/Innovation.png";
+import successIcon from "@/assets/Success.png";
 
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
@@ -11,7 +14,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Animated Background */}
       <div 
         className="absolute inset-0 bg-gradient-hero"
@@ -24,20 +27,22 @@ const HeroSection = () => {
       </div>
 
       {/* Glass morphism content card */}
-      <div className="relative z-10 container mx-auto px-4 lg:px-8">
-        <div className="max-w-5xl mx-auto text-center">
+      <div className="relative z-10 container mx-auto px-2 lg:px-4">
+        <div className="max-w-6xl mx-auto text-center">
           {/* Glass card wrapper */}
-          <div className="bg-gradient-glass backdrop-blur-glass border border-white/20 rounded-3xl p-8 md:p-12 shadow-glass animate-slide-up">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
-              <span className="block animate-fade-in">Uny & Co.</span>
-              <span className="block bg-gradient-accent bg-clip-text text-transparent animate-glow text-4xl md:text-5xl lg:text-6xl mt-2">
+          <div className="bg-gradient-glass backdrop-blur-glass border border-white/20 rounded-3xl p-8 md:p-12 lg:p-16 shadow-glass animate-slide-up mx-2">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight -mt-4">
+              <span className="block animate-fade-in text-4xl md:text-6xl lg:text-7xl" style={{ fontFamily: 'Cinzel, serif' }}>U N Y & C O</span>
+              <span className="block text-2xl md:text-3xl lg:text-4xl text-white/90 mb-6" style={{ fontFamily: 'Cinzel, serif' }}>
+                Chartered Accountants
+              </span>
+              <span className="block bg-gradient-accent bg-clip-text text-transparent animate-glow text-2xl md:text-3xl lg:text-4xl mt-4" style={{ fontFamily: 'Crimson Text, serif' }}>
                 Where Excellence Meets Innovation
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed font-light">
-              Premium financial consulting services crafted with precision, delivered with passion. 
-              We don't just manage numbers — we architect your financial future.
+            <p className="text-xl md:text-2xl text-white/90 mb-10 mt-8 max-w-3xl mx-auto leading-relaxed font-light" style={{ fontFamily: 'Crimson Text, serif' }}>
+              Trust isn't just a word it's how we work. Our team delivers sharp, honest advice with long-term impact in mind.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
@@ -46,8 +51,9 @@ const HeroSection = () => {
                 size="lg"
                 onClick={() => scrollToSection('contact')}
                 className="w-full sm:w-auto px-10 py-4 text-lg font-semibold"
+                style={{ fontFamily: 'Crimson Text, serif' }}
               >
-                Schedule Consultation
+                Request for a consultation
                 <ArrowRight className="ml-2 h-6 w-6" />
               </Button>
               
@@ -56,8 +62,9 @@ const HeroSection = () => {
                 size="lg"
                 onClick={() => scrollToSection('services')}
                 className="w-full sm:w-auto px-10 py-4 text-lg font-semibold"
+                style={{ fontFamily: 'Crimson Text, serif' }}
               >
-                Discover Our Services
+                Explore Our Expertise
               </Button>
             </div>
 
@@ -65,25 +72,44 @@ const HeroSection = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               <div className="text-center group hover:scale-105 transition-spring">
                 <div className="w-16 h-16 bg-gradient-accent rounded-2xl mx-auto mb-4 flex items-center justify-center shadow-glow">
-                  <div className="w-8 h-8 bg-white rounded-lg"></div>
+                  <img 
+                    src={precisionIcon} 
+                    alt="Precision Icon" 
+                    className="w-12 h-12 object-contain"
+                  />
                 </div>
-                <div className="text-xl font-bold text-accent mb-2">Precision First</div>
-                <div className="text-white/80 text-sm leading-relaxed">Every detail meticulously crafted for excellence</div>
+                <div className="text-xl font-bold text-accent mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>Precision First</div>
+                <div className="text-white/80 text-sm leading-relaxed" style={{ fontFamily: 'Crimson Text, serif' }}>Excellence starts with the little things</div>
               </div>
               <div className="text-center group hover:scale-105 transition-spring">
                 <div className="w-16 h-16 bg-gradient-accent rounded-2xl mx-auto mb-4 flex items-center justify-center shadow-glow">
-                  <div className="w-8 h-8 bg-white rounded-lg"></div>
+                  <img 
+                    src={innovationIcon} 
+                    alt="Innovation Icon" 
+                    className="w-12 h-12 object-contain"
+                  />
                 </div>
-                <div className="text-xl font-bold text-accent mb-2">Innovation Driven</div>
-                <div className="text-white/80 text-sm leading-relaxed">Cutting-edge solutions for modern challenges</div>
+                <div className="text-xl font-bold text-accent mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>Innovation Driven</div>
+                <div className="text-white/80 text-sm leading-relaxed" style={{ fontFamily: 'Crimson Text, serif' }}>Cutting-edge solutions for modern challenges</div>
               </div>
               <div className="text-center group hover:scale-105 transition-spring">
                 <div className="w-16 h-16 bg-gradient-accent rounded-2xl mx-auto mb-4 flex items-center justify-center shadow-glow">
-                  <div className="w-8 h-8 bg-white rounded-lg"></div>
+                  <img 
+                    src={successIcon} 
+                    alt="Success Icon" 
+                    className="w-12 h-12 object-contain"
+                  />
                 </div>
-                <div className="text-xl font-bold text-accent mb-2">Client Success</div>
-                <div className="text-white/80 text-sm leading-relaxed">Your growth is our greatest achievement</div>
+                <div className="text-xl font-bold text-accent mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>Client Success</div>
+                <div className="text-white/80 text-sm leading-relaxed" style={{ fontFamily: 'Crimson Text, serif' }}>Your growth is our greatest achievement</div>
               </div>
+            </div>
+
+            {/* Core Values Statement */}
+            <div className="text-center mt-6">
+              <span className="block text-lg md:text-xl lg:text-2xl text-white/80 font-bold" style={{ fontFamily: 'Cinzel, serif' }}>
+                ROOTED IN INTEGRITY. DRIVEN BY INNOVATION. COMMITTED TO YOU.
+              </span>
             </div>
           </div>
         </div>
