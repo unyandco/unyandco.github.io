@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { 
   Mail, 
   Phone, 
@@ -28,55 +29,43 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  // EmailJS configuration - You'll need to replace these with your actual values
-  const EMAILJS_SERVICE_ID = 'your_service_id';
-  const EMAILJS_TEMPLATE_ID = 'your_template_id';
-  const EMAILJS_PUBLIC_KEY = 'your_public_key';
+  // Google Apps Script Web App URL
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzUbcIpToB6yd8LbAK60CBosQBCN8IUjhCYw5IIH4D1hQiFQI7iVc6K7JFvzZjTeSb6/exec';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Temporary solution - just show success message
-    // Replace this with EmailJS when you have the credentials
-    if (EMAILJS_SERVICE_ID === 'your_service_id') {
-      // Show temporary success message
-      setTimeout(() => {
-        toast({
-          title: "Message Received!",
-          description: "Thank you for your inquiry. I'll get back to you within 24 hours. (Note: This is a demo - please contact directly via email/phone)",
-        });
-        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-        setIsSubmitting(false);
-      }, 1000);
-      return;
-    }
-
     try {
-      // Send email using EmailJS
-      const result = await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
+      // Send data to Google Apps Script
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Important for CORS with Google Apps Script
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
           phone: formData.phone,
           subject: formData.subject,
           message: formData.message,
-          to_name: 'UNY & CO', // Your name/company
-        },
-        EMAILJS_PUBLIC_KEY
-      );
+          timestamp: new Date().toISOString()
+        })
+      });
 
-      if (result.status === 200) {
-        toast({
-          title: "Message Sent Successfully!",
-          description: "Thank you for your inquiry. I'll get back to you within 24 hours.",
-        });
-        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-      }
+      // Since we're using no-cors mode, we can't read the response
+      // But if we reach this point, the request was sent successfully
+      toast({
+        title: "Message Sent Successfully!",
+        description: "Thank you for your inquiry. I'll get back to you within 24 hours.",
+      });
+      
+      // Clear the form
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      
     } catch (error) {
-      console.error('EmailJS Error:', error);
+      console.error('Error submitting form:', error);
       toast({
         title: "Failed to Send Message",
         description: "Please try again or contact us directly via email or phone.",
@@ -91,6 +80,13 @@ const ContactSection = () => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
+    }));
+  };
+
+  const handleSelectChange = (value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      subject: value
     }));
   };
 
@@ -231,14 +227,21 @@ const ContactSection = () => {
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="subject">Subject</Label>
-                      <Input
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        placeholder="What can I help you with?"
-                        required
-                      />
+                      <Select value={formData.subject} onValueChange={handleSelectChange}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a service..." />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="Audit & Assurance">Audit & Assurance</SelectItem>
+                          <SelectItem value="Direct Tax">Direct Tax</SelectItem>
+                          <SelectItem value="GST & Compliance">GST & Compliance</SelectItem>
+                          <SelectItem value="Management Consultancy">Management Consultancy</SelectItem>
+                          <SelectItem value="Financial Reporting">Financial Reporting</SelectItem>
+                          <SelectItem value="Incorporation & Secretarial">Incorporation & Secretarial</SelectItem>
+                          <SelectItem value="General Inquiry">General Inquiry</SelectItem>
+                          <SelectItem value="Other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
                     </div>
                   </div>
 

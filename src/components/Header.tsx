@@ -125,7 +125,7 @@ const Header = () => {
                 className="self-start"
                 style={{ fontFamily: 'Crimson Text, serif' }}
               >
-                Request for a consultation
+                Get Quote
               </Button>
             </nav>
           </div>
